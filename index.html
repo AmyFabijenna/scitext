@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amy Lang - Brilliant texten</title>
+    <title>Amy Lang - Freie Schreibende & Autorin</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e6c3f7 0%, #e1bee7 25%, #ffb347 50%, #ffc0cb 75%, #dda0dd 100%);
+            background: linear-gradient(135deg, #1a237e 0%, #303f9f 25%, #3949ab 50%, #ff8a50 75%, #ffa726 100%);
             min-height: 100vh;
             padding: 20px;
             line-height: 1.6;
@@ -29,20 +29,44 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #9966cc, #dda0dd);
-            color: white;
+            background: linear-gradient(135deg, #ff8a50, #ffa726, #ffb74d);
+            color: #212121;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 30s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
         }
 
-        .header p {
-            font-size: 1.2em;
+        .header .subtitle {
+            font-size: 1.4em;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
             opacity: 0.9;
         }
 
@@ -50,17 +74,18 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(26, 35, 126, 0.8);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .nav-link:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(26, 35, 126, 1);
             transform: translateY(-2px);
         }
 
@@ -68,156 +93,290 @@
             padding: 40px;
         }
 
-        .intro-text {
-            background: linear-gradient(135deg, #f8f4ff, #fff0f5);
-            padding: 30px;
+        .intro-section {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            padding: 40px;
             border-radius: 15px;
             margin-bottom: 40px;
-            border-left: 5px solid #9966cc;
+            border-left: 5px solid #3f51b5;
             text-align: center;
-            font-size: 1.1em;
-            color: #444;
-            line-height: 1.8;
         }
 
-        .resources-section {
-            margin: 40px 0;
+        .intro-section h2 {
+            color: #1a237e;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        .resources-title {
-            background: linear-gradient(135deg, #9966cc, #dda0dd);
+        .intro-section p {
+            font-size: 1.2em;
+            color: #424242;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+
+        .services-section {
+            margin: 50px 0;
+        }
+
+        .services-title {
+            background: linear-gradient(135deg, #1a237e, #3f51b5);
             color: white;
             text-align: center;
             padding: 25px;
             border-radius: 15px;
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             margin-bottom: 30px;
         }
 
-        .resources-container {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(255, 138, 80, 0.2);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff8a50, #ffa726);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 138, 80, 0.3);
+            border-color: #ff8a50;
+        }
+
+        .service-card h3 {
+            color: #1a237e;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            color: #424242;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .biography-section {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px 0;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .biography-section h2 {
+            color: #4a148c;
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
-        .resource-button {
-            background: linear-gradient(135deg, #dda0dd, #e6c3f7);
-            color: #333;
+        .bio-item {
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .bio-item h4 {
+            color: #4a148c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
             font-weight: 600;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
         }
 
-        .resource-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #e6c3f7, #ffb347);
-        }
-
-        .resource-button:active {
-            transform: translateY(-2px);
-        }
-
-        .whatsapp-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-        }
-        
-        .whatsapp-text {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            color: #444;
+        .bio-item p {
+            color: #424242;
             line-height: 1.6;
-            background: linear-gradient(135deg, #f8f4ff, #fff0f5);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 5px solid #9966cc;
         }
 
-        .whatsapp-button {
-            background: linear-gradient(135deg, #25d366, #20c158);
+        .publication-highlight {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            border: 2px solid #3f51b5;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .publication-highlight h4 {
+            color: #1a237e;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .publication-highlight .citation {
+            font-style: italic;
+            color: #424242;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a237e, #303f9f);
             color: white;
-            padding: 20px 30px;
+            border-radius: 15px;
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: float 40s infinite linear reverse;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .contact-button {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 18px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: 600;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
             cursor: pointer;
-            min-width: 280px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.3);
         }
 
-        .whatsapp-button:hover {
+        .contact-button:hover {
+            background: linear-gradient(135deg, #283593, #3949ab);
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-            background: linear-gradient(135deg, #20c158, #1ea854);
-        }
-
-        .whatsapp-button small {
-            font-size: 0.85em;
-            margin-top: 5px;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        .footer-content {
-            background: linear-gradient(135deg, #f8f4ff, #fff0f5);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0 20px 0;
-            border-left: 5px solid #9966cc;
-            font-size: 0.95em;
-            color: #444;
-            line-height: 1.7;
-        }
-
-        .footer-content h3 {
-            color: #9966cc;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .footer-content p {
-            margin-bottom: 15px;
+            box-shadow: 0 12px 35px rgba(26, 35, 126, 0.4);
         }
 
         .footer {
-            background: linear-gradient(135deg, #9966cc, #dda0dd);
+            background: linear-gradient(135deg, #424242, #616161);
             color: white;
+            padding: 40px;
             text-align: center;
-            padding: 30px;
-            margin-top: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: #ffa726;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
             
             .content {
-                padding: 20px;
+                padding: 20px 15px;
             }
             
-            .resources-container {
+            .services-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .contact-section h2 {
+                font-size: 2em;
             }
 
             .nav-link {
@@ -232,87 +391,117 @@
     <div class="container">
         <header class="header" style="position: relative;">
             <a href="https://amyfabijenna.github.io/amylang-deutsch/" class="nav-link">← Zurück zur Hauptseite</a>
-            <h1>Amy Lang - Brilliant texten</h1>
-            <p>Von der Idee zum perfekten Text</p>
+            <h1>Amy Lang</h1>
+            <p class="subtitle">Freie Schreibende & Autorin</p>
         </header>
 
         <main class="content">
-            <div class="intro-text">
-                <strong>✍️ Meisterhafte Texte schreiben - Von der Idee zum perfekten Text! ✍️</strong><br><br>
-                
-                Amy Lang - Autorin, Coach & Ihre Partnerin für brillante Texte<br><br>
-                
-                Träumen Sie von Texten, die begeistern?<br>
-                Ob wissenschaftliche Arbeit, kreative Projekte oder berufliche Kommunikation - gemeinsam erwecken wir Ihre Ideen zum Leben! Mit 20 Jahren Schreiberfahrung und einem Universitätsabschluss verwandle ich Schreibblockaden in Schreibfreude.<br><br>
-                
-                <strong>Für wen ich da bin:</strong><br>
-                Studenten - Von der Seminararbeit bis zur Masterarbeit<br>
-                Wissenschaftler - Präzise, überzeugende Fachtexte<br>
-                Junge Schreibtalente - Kreativität trifft auf Handwerk<br>
-                Alle Textbegeisterten - Die ihre Ausdruckskraft entfalten wollen<br><br>
-                
-                <strong>Was Sie bei mir erwartet:</strong><br>
-                ✨ Individuelles Coaching statt Standardrezepte<br>
-                ✨ Experimentierfreude trifft professionelle Technik<br>
-                ✨ Von der ersten Zeile bis zum letzten Schliff<br>
-                ✨ Ihr Stil, nur besser!<br><br>
-                
-                Lassen Sie uns gemeinsam Textgeschichte schreiben!
-            </div>
+            <section class="intro-section">
+                <h2>Von der Idee zum perfekten Text</h2>
+                <p>Sprache ist meine Leidenschaft, das Schreiben meine Berufung. Seit über zwei Jahrzehnten verwandle ich Ideen in überzeugende Texte – ob literarisch, wissenschaftlich oder journalistisch.</p>
+                <p>Als freie Schreibende und Autorin bringe ich fundierte Ausbildung, praktische Erfahrung und kreative Inspiration zusammen, um Ihren Texten Leben einzuhauchen.</p>
+            </section>
 
-            <div class="resources-section">
-                <div class="resources-title">
-                    Brilliant texten mit Amy
+            <section class="services-section">
+                <div class="services-title">
+                    Meine Schreibbereiche
                 </div>
                 
-                <div class="resources-container">
-                    <a href="https://amyfabijenna.github.io/scitext/scitext.html" target="_blank" class="resource-button">
-                        ✍️ Wissenschaftliche und literarische Texte verfassen<br>
-                        <small>Anleitungen für alle wichtigen Textarten</small>
-                    </a>
-                    
-                    <a href="https://amyfabijenna.github.io/amytext/" target="_blank" class="resource-button">
-                        ✍️ Texte für die Schule verfassen<br>
-                        <small>Anleitungen für Schultexte von der 5. Schulstufe bis zum Abitur/zur Matura</small>
-                    </a>
-                    
-                    <div class="resource-button" style="background: linear-gradient(135deg, #f0f0f0, #e0e0e0); color: #888; cursor: default;">
-                        🔜 Weitere Ressourcen folgen bald...<br>
-                        <small>Stöbern Sie in unseren Texten</small>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Literarisches Schreiben</h3>
+                        <p>Kreative Texte mit Tiefe und Ausstrahlung – von der ersten Zeile bis zum letzten Punkt.</p>
+                        <ul class="service-features">
+                            <li>Kurzgeschichten & Erzählungen</li>
+                            <li>Literarische Texte aller Art</li>
+                            <li>Kreatives Schreibcoaching</li>
+                            <li>Textentwicklung & -überarbeitung</li>
+                            <li>Bühnenerfahrung durch Lesungen</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Wissenschaftliches Schreiben</h3>
+                        <p>Präzise, strukturierte Texte für Forschung und Lehre in den Human- und Sozialwissenschaften.</p>
+                        <ul class="service-features">
+                            <li>Akademische Arbeiten aller Stufen</li>
+                            <li>Forschungsberichte & Studien</li>
+                            <li>Wissenschaftliche Artikel</li>
+                            <li>Betreuung von Studienarbeiten</li>
+                            <li>Universitärer Hintergrund</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Journalistisches Schreiben</h3>
+                        <p>Klare, eingängige Texte für Medien und Öffentlichkeit – fundiert und gut lesbar.</p>
+                        <ul class="service-features">
+                            <li>Artikel & Reportagen</li>
+                            <li>Pressemitteilungen</li>
+                            <li>Online-Content & Blogs</li>
+                            <li>Corporate Communication</li>
+                            <li>Journalistenschule & Praxiserfahrung</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="whatsapp-text">
-                <strong>Interessiert? Lassen Sie uns sprechen!</strong><br>
-                Melden Sie sich gerne für eine unverbindliche Anfrage. Ich berate Sie persönlich zu Ihren Textprojekten und finde gemeinsam mit Ihnen den besten Weg zu Ihrem Schreibziel.
-            </div>
-
-            <div class="whatsapp-container">
-                <a href="https://wa.me/36301818503?text=Hallo%20Amy,%20ich%20habe%20Interesse%20an%20einem%20Textcoaching!" 
-                   target="_blank" 
-                   class="whatsapp-button">
-                    💬 Nehmen Sie Kontakt auf!
-                    <small>+36 30 181 8503</small>
-                </a>
-            </div>
-
-            <div class="footer-content">
-                <h3>Allgemeine Geschäftsbedingungen</h3>
-                <p>Coaching-Sitzungen können bis zu 24 Stunden vorher kostenfrei storniert werden. Bei späterer Absage fallen 100% der Gebühren an.</p>
+            <section class="biography-section">
+                <h2>Mein Weg als Schreibende</h2>
                 
-                <h3>Impressum</h3>
-                <p><strong>Amy Lang</strong><br>
-                Babenbergerstr. 128<br>
-                8020 Graz, Österreich</p>
-                <p>E-Mail: amylan@ik.me<br>
-                Telefon: +36 (0) 30 181 8503<br>
-                UID-Nummer: AT U798 77 625</p>
-            </div>
+                <div class="bio-grid">
+                    <div class="bio-item">
+                        <h4>Literarische Laufbahn</h4>
+                        <p>Seit jeher fasziniert mich die Kraft des geschriebenen Wortes. Über die Jahre habe ich zahlreiche Kurzgeschichten verfasst und diese bei Lesungen in Berlin vor Publikum präsentiert. Das direkte Feedback der Zuhörer hat mein Gespür für wirkungsvolle Texte geschärft.</p>
+                    </div>
+
+                    <div class="bio-item">
+                        <h4>Akademische Ausbildung</h4>
+                        <p>Mein Studium der Niederländischen Philologie und Publizistik- und Kommunikationswissenschaft (Magistra Artium) hat mir eine solide Basis für wissenschaftliches Arbeiten und fundierte Textanalyse vermittelt.</p>
+                    </div>
+
+                    <div class="bio-item">
+                        <h4>Journalistische Erfahrung</h4>
+                        <p>Nach dem Besuch einer Journalistenschule sammelte ich praktische Erfahrungen als Editorin bei Meta Communication Systems (2012-2013). Diese Zeit prägte mein Verständnis für präzise, zielgruppengerechte Kommunikation.</p>
+                    </div>
+
+                    <div class="bio-item">
+                        <h4>Vielseitige Expertise</h4>
+                        <p>Heute verbinde ich literarische Kreativität mit wissenschaftlicher Präzision und journalistischer Klarheit. Diese einzigartige Kombination ermöglicht es mir, für jedes Textprojekt den passenden Ansatz zu finden.</p>
+                    </div>
+                </div>
+
+                <div class="publication-highlight">
+                    <h4>Veröffentlichung</h4>
+                    <div class="citation">
+                        Amy Lang: "Ik ben een Berlijner" - Niederländer in Berlin. In: Meißner, Anke: Europäisches Erbe in Berlin - Kurzgeschichten. MyStry Verlag Chris Kurbjuhn, Berlin 2005.
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2>Lassen Sie uns gemeinsam schreiben</h2>
+                <p>Ob Sie selbst schreiben lernen möchten, Unterstützung bei einem Textprojekt brauchen oder professionelle Texte benötigen – ich freue mich auf Ihre Anfrage!</p>
+                <a href="https://wa.me/36301818503?text=Hallo%20Amy,%20ich%20interessiere%20mich%20für%20Ihre%20Schreibdienstleistungen." 
+                   target="_blank" 
+                   class="contact-button">Kontakt aufnehmen</a>
+            </section>
         </main>
 
         <footer class="footer">
-            <p>&copy; 2025 Amy Lang - Textcoach & Autorin | Alle Rechte vorbehalten</p>
+            <h3>Impressum</h3>
+            <p><strong>Amy Lang - Freie Schreibende & Autorin</strong></p>
+            <p>Babenbergerstr. 128<br>8020 Graz, Österreich</p>
+            <p>E-Mail: <a href="mailto:amylan@ik.me">amylan@ik.me</a></p>
+            <p>Telefon: +36 (0) 30 181 8503</p>
+            <p>UID-Nummer: AT U798 77 625</p>
+            <br>
+            <p style="font-size: 0.9em; opacity: 0.8;">
+                Haftungsausschluss: Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. 
+                Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+            </p>
+            <br>
+            <p>&copy; 2025 Amy Lang - Freie Schreibende & Autorin | Alle Rechte vorbehalten</p>
         </footer>
     </div>
 </body>
